@@ -1,0 +1,13 @@
+URL,STATUS,FEATURE SET
+https://www3.ntu.edu.sg/home/ehchua/programming/cpp/c1_Basics.html,Legitimate URL,"[-1, 0, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, -1]"
+https://resume.shine.com/resume-score-checker/score-checker/,Legitimate URL,"[-1, 0, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, -1]"
+https://www.amazon.com/,Legitimate URL,"[-1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, 1, 0, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, -1]"
+http://127.0.0.1:5000,Suspected Phishing URL,"[-1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, 0, -1]"
+"https://login.corp.google.com/request?s=ai.ytimg.com:443/uberproxy/&d=https://ai.ytimg.com/%3Fupxsrf%3DAGU1F-Z0QeMNeWnKrHuwcgDmiyda2geoo2Lwgm2fiB_I8vkp6Q:1675404650280&maxAge=1200&authLevel=2000000&keyIds=p2T,ul2,3aq,r4j&c=1",Suspected Phishing URL,"[-1, -1, -1, 1, -1, -1, -1, 0, -1, -1, -1, -1, -1, 1, -1, 0, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, -1]"
+https://www.w3schools.com/cssref/pr_background-image.php,Legitimate URL,"[-1, 0, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, -1]"
+http://127.0.0.1:5000/,Suspected Phishing URL,"[-1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, 0, -1]"
+,Suspected Phishing URL,"[-1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, -1, 1, -1, -1]"
+https://www.flipkart.com/,Legitimate URL,"[-1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, 0, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, -1]"
+https://tech.hindustantimes.com/how-to/get-iphone-se-for-1000-check-massive-discount-offers-on-iphone-12-mini-iphone-13-mini-too-71653101820965.html,Legitimate URL,"[-1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, -1]"
+https://www.verizon.com/shop/online/free-cell-phones/apple/,Suspected Phishing URL,"[-1, 0, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 0, -1]"
+

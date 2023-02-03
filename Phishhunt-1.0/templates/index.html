@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <title>Phishing URL Detection</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+  <!-- <link href="./favicon.ico" rel="icon" type="image/x-icon" /> -->
+
+  <link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8Ak6Kt65Ojrf+To63/////AP///wD///8A////AP///wD///8AycrLHztMVf8/UVz/OUlT//7+/gC6y9CvwdTY/8HU2P/B1Nj/3eHlMf///wD///8A////AP///wD///8AM0JL/09lcv9ie4v/aqG7/7rQ1f8tRUz/8fHxA9jb2xLB1Nj/ucPKa////wD///8A////AP///wD///8A6+zsBk5kcf94pLX/l7jI/0Fmc/90udv/YZq2/z5leP/B1Nj//v7+AP///wD///8A////AP///wD///8A////ADdHUP+Anq//p77E/3nB5f95wub/dLnb/2upyP9Gcoj/////AP///wD///8A////AP///wD///8A////AP///wCZsLj/WYyl/3a83/95weX/ecLm/3e94P9ppcT/Q2t//////wD///8A////AP///wD///8A////AP39/QDB1Nj/MU9f/1eLpf9joL//drzf/3a83/9ykKX/WXGC/zRCTP////8A////AP///wD///8A////ALnDynHB1Nj/rrS0Lf///wA0V2n/WIyn/2Wfvf9lf5H/Vm5+/zM5Pf////8A////AP///wD///8A////ANzg5DLB1Nj/wdTY/8HU2P+8ztK3/v7+ADNTY/8/UFz/PU5a/y0yNOX///8A////AP///wD///8A////AP///wCTo63/k6Ot/5Oire7///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAD//wAA//gAAP4hAAD4GwAA+AcAAPAPAADwDwAA4A8AANgfAACEPwAAH/8AAP//AAD//wAA//8AAA==" rel="icon" type="image/x-icon" />
+
+  <style>
+@keyframes dot-keyframes {
+  0% {
+    opacity: 0.4;
+    transform: scale(1, 1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2, 1.2);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scale(1, 1);
+  }
+}
+.loading-dots {
+  text-align: center;
+  width: 100%;
+}
+.loading-dots--dot {
+  animation: dot-keyframes 1.5s infinite ease-in-out;
+  background-color: #fff;
+  border-radius: 10px;
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  margin: 15px;
+}
+.loading-dots--dot:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.loading-dots--dot:nth-child(3) {
+  animation-delay: 1s;
+}
+
+
+h1{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 40pt;
+  margin-top: 50px;
+  color:white;
+  position: center;
+}
+
+#dataTable{
+  margin-left: auto; 
+  margin-right: auto;
+  table-layout: auto;
+  width: 50%;
+  position: relative;
+}
+
+#dataTable{
+  border: 1px solid #333333;
+  border-style:hidden;
+}
+
+#dataTable tr,td{
+  
+ /* border-collapse: collapse;*/
+  border: 1px solid #ddd;
+  width:10%;
+  /*padding: 15px;*/
+  color:black;
+  text-align: center;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+#dataTable tr:nth-child(even){background-color:#d1d1d1 ;}
+
+#dataTable tr:nth-child(odd){background-color:#396e7e ;}
+
+
+#reload{
+  position : absolute;
+  left : 790px;
+  bottom : 20px;  
+}
+
+#redirect{
+  position : absolute;
+  left : 580px;
+  bottom : 20px;
+}
+
+.btn-info {
+  color: #fff;
+    background-color: #030a0e;
+    border-color: white;
+}
+
+.btn-info:hover {
+    color: #fff;
+    background-color: #004eff;
+    border-color:  white;
+    border-width: 1px;
+}
+
+
+
+  </style>
+</head>
+
+<!-- <body style="background-size:cover;  background-image: url('https://storage.needpix.com/rsynced_images/hacking-3112539_1280.png');"></body>
+<center style="margin-top: 90px;"> -->
+
+  <!-- <body style="background-size:cover;  background-image: url('https://media.istockphoto.com/id/913017342/photo/blue-circuitry-digital-lock-on-binary-code.jpg?s=612x612&w=0&k=20&c=aPIFm0cnl0Ci8W4PwcGx5HIH0yMiwN4jR1DP2sBOKrY=');"></body> -->
+
+
+<body style="background-size:cover;  background-image: url('https://www.maxpixel.net/static/photo/1x/Cyber-Security-Network-Technology-Internet-3374252.jpg');"></body>
+
+<center style="margin-top: 90px;">
+
+  <!-- <img src="https://img.freepik.com/premium-vector/cyber-security-logo-with-shield-check-mark-security-shield-concept-internet-security_100456-983.jpg?w=740" alt="logo"> -->
+
+  <h1 class="text-white">Phish-hunt</h1>
+   <div class="single-url">
+   <div class="input-group input-group-lg" style="width: 850px;margin-top: 50px">
+     <div class="input-group-prepend">
+       <span class="input-group-text" id="inputGroup-sizing-lg">URL:</span>
+     </div>
+
+
+     <input type="text" class="form-control" placeholder="Enter URL you want to scan" id="url"   value="">
+     
+       <button type="submit" id="submit" class="btn getResult btn-info btn-lg mb-2" style="margin-left: 10px">Submit</button>
+       <button type="submit" id="clear" class="btn getResult btn-info btn-lg mb-2" onclick="clearField()" style="margin-left: 10px">Clear</button>
+
+    </div>
+
+  </div>
+
+    
+  
+
+    <div class="result"></div>
+</center>
+
+<!-- <a href=features>
+<button type="submit" id="redirect" class="btn getResult btn-info btn-lg mb-2"  style="display:none">Show Features</button>
+</a> -->
+
+
+
+
+
+<!-- <table border="true" id="dataTable" style="display:none">
+<tbody>
+
+<tr>
+  <td><b>DOMAIN NAME</b></td>
+  <td><b><span id="domain"></span></b></td>
+</tr>
+
+<tr>
+  <td><b>CREATION DATE</b></td>
+  <td><b><span id="c_date"></span></b></td>
+</tr>
+
+<tr>
+  <td><b>EXPIRATION DATE</b></td>
+  <td><b><span id="e_date"></span></b></td>
+</tr>
+
+<tr>
+  <td><b>REGISTRAR</b></td>
+  <td><b><span id="reg"></span></b></td>
+</tr>
+
+<tr>
+  <td><b>URL LENGTH</b></td>
+  <td><b><span id="length"></span></b></td>
+</tr>
+
+<tr>
+  <td><b>DOMAIN EXPIRATION</b></td>
+  <td><b><span id="reg_length"></span> Days</b></td>
+</tr>
+
+
+
+</tbody>
+</table> -->
+
+
+<!-- <button type="button" id="reload" class="btn getResult btn-info btn-lg mb-2" onclick="reloadPage()" style="display:none">Reload</button> -->
+
+
+
+
+
+</body>
+
+
+<script>
+
+function clearField(){
+  document.getElementById('url').value='';
+}
+
+
+
+document.getElementsByClassName("getResult")[0].addEventListener("click",result);
+   function result(){
+
+      var div = document.querySelector(".result");
+      var urlname = document.getElementById('url').value;
+
+     
+      /*var f=[];*/
+      $.ajax({
+ 			data : {
+ 				name : urlname
+ 			},
+ 			type : 'GET',
+ 			url : '/result'
+ 		}).always(div.innerHTML= '<div class="loading-dots mt-4"><div class="loading-dots--dot"></div><div class="loading-dots--dot"></div><div class="loading-dots--dot"></div></div>')
+ 		.done(function(data) {
+
+      
+
+ 			if (data.error) {
+ 				alert(data.error);
+ 			}
+
+ 			else {
+        var newHTML = '<h3 class="text-white mt-4">This is a '+data[1]+'</h3>';
+        div.innerHTML=  newHTML;
+        f=data[0];
+        
+        document.getElementById('dataTable').style.display="block";
+        document.getElementById('redirect').style.display="block";
+        document.getElementById('reload').style.display="block";
+        
+      }
+
+    
+
+ 		});
+
+      var lst;
+      $.ajax({
+ 			data : {
+ 				name : urlname
+ 			},
+ 			type : 'GET',
+ 			url : '/details'
+    }).done(function(data){
+        lst=data;
+        document.getElementById("domain").innerHTML = lst[0];
+        document.getElementById("c_date").innerHTML = lst[1];
+        document.getElementById("e_date").innerHTML = lst[2];
+        document.getElementById("reg").innerHTML = lst[3];
+        document.getElementById("length").innerHTML = lst[4];
+        document.getElementById("reg_length").innerHTML = lst[5];
+    });
+    
+    
+    document.getElementById('redirect').onclick=function(){
+          
+          sessionStorage.setItem('array', JSON.stringify(f)); 
+        }
+
+   }
+
+  
+
+   function reloadPage()
+   {
+     location.reload();
+   }
+
+   
+
+</script>
+
+</html>
